@@ -1,11 +1,13 @@
+//HELLO
+//hello again lets see if this works
 var App = () => (
-  <div>
+   <div>
     <Nav />
     <div className="col-md-7">
-      <VideoPlayer/>
+      <VideoPlayer video={window.exampleVideoData}/>
     </div>
     <div className="col-md-5">
-      <VideoList/>
+      <VideoList videos={window.exampleVideoData}/>
     </div>
   </div>
 );
@@ -13,3 +15,4 @@ var App = () => (
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
+
