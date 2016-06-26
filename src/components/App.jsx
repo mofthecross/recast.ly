@@ -1,28 +1,38 @@
-//HELLO
-//hello again lets see if this works
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      done: false
+      currentVideo: exampleVideoData[0],
+      allVideos: exampleVideoData
     };
+
+    var youTubeData = this.props.searchYouTube({
+      key: window.YOUTUBE_API_KEY,
+      query: 'random cats',
+      max: 5
+    }, function() {});
+    console.log(youTubeData);
   }
 
-  onVideoTitleClick (evt) {
+  onVideoTitleClick (video) {
     this.setState( {
-      done: !this.state.done
+      currentVideo: video
     });
   }
+
+  // componentDidMount() {
+
+  // }
   render() { 
     return (
      <div>
       <Nav />
       <div className="col-md-7">
-        <VideoPlayer video={window.exampleVideoData[0]}/>
+        <VideoPlayer video={this.state.currentVideo}/>
       </div>
       <div className="col-md-5">
-        <VideoList videos={window.exampleVideoData}/>
+        <VideoList onVideoTitleClick={this.onVideoTitleClick.bind(this)} videos={this.state.allVideos}/>
       </div>
     </div>
     );
