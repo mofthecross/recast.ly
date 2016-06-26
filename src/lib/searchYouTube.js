@@ -8,8 +8,6 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
     videoEmbeddable: 'true'
   })
     .done(function(data) {
-      console.log('GOD DAMMIT GUYS WE GOT IT ALL!');
-      console.log(data);
       callback(data.items);
     })
     .fail(function() {
