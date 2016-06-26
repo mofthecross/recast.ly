@@ -12,7 +12,6 @@ class App extends React.Component {
       query: 'random cats',
       max: 5
     }, function() {});
-    console.log(youTubeData);
   }
 
   onVideoTitleClick (video) {
@@ -21,9 +20,20 @@ class App extends React.Component {
     });
   }
 
-  // componentDidMount() {
+  componentDidMount() {
+    var that = this;
+    this.props.searchYouTube({
+      key: window.YOUTUBE_API_KEY,
+      query: 'random cats',
+      max: 5
+    }, function(listOfVideos) { 
+      that.setState({
+        currentVideo: listOfVideos[0],
+        allVideos: listOfVideos
+      });
+    });
+  }
 
-  // }
   render() { 
     return (
      <div>
